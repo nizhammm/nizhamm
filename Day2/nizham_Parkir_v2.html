@@ -1,0 +1,49 @@
+<script>
+  let kendaraan;
+  const MOTOR = "1";
+  const MOBIL = "2";
+  const EXIT = "3";
+  do {
+    kendaraan = prompt(`Pilih kendaraan anda:
+    1. Motor
+    2. Mobil
+    3. Exit`);
+  } while (!(kendaraan == "1" || kendaraan == "2" || kendaraan));
+
+  let biayaParkir = 0;
+  if (kendaraan == MOBIL || kendaraan == MOTOR) {
+    let durasiPerjam;
+    durasiPerjam = prompt("Berapa lama anda parkir? (Jam)");
+    durasiPerjam = parseInt(durasiPerjam);
+
+    if (durasiPerjam > 0) {
+      let duaJamPertama;
+      let biayaPerJam;
+      let biayaMaks;
+      if (kendaraan == MOTOR) {
+        duaJamPertama = 3000;
+        biayaPerJam = 1000;
+        biayaMaks = 30000;
+      } else if (kendaraan == MOBIL) {
+        duaJamPertama = 5000;
+        biayaPerJam = 2000;
+        biayaMaks = 50000;
+      }
+
+      if (durasiPerjam <= 2) {
+        biayaParkir = duaJamPertama;
+      } else if (durasiPerjam > 2) {
+        biayaParkir = duaJamPertama + biayaPerJam * (durasiPerjam - 2);
+      }
+      if (biayaParkir > biayaMaks) {
+        biayaParkir = biayaMaks;
+      }
+
+      alert(`Total biaya parkir anda adalah: Rp. ${biayaParkir}`);
+    } else {
+      alert("Parkir anda di bawah 1 jam");
+    }
+  } else {
+    alert("Angka yang anda input salah");
+  }
+</script>

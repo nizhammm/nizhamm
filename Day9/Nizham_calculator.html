@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Mari Berhitung!</h1>
+    <h2><span id="hasil"></span></h2>
+    <input id="input1" type="number" />
+    <input id="input2" type="number" />
+    <br />
+    <br />
+    <button id="tambah" onclick="tambah()">Tambah</button>
+    <button id="kurang" onclick="kurang()">Kurang</button>
+    <button id="kali" onclick="kali()">Kali</button>
+    <button id="bagi" onclick="bagi()">Bagi</button>
+
+    <script>
+      let input1Value;
+      let input2Value;
+      function getValue() {
+        input1Value = document.getElementById("input1").value;
+        input2Value = document.getElementById("input2").value;
+        input1Value = parseInt(input1Value);
+        input2Value = parseInt(input2Value);
+      }
+
+      function tambah() {
+        getValue();
+        let calculation = input1Value + input2Value;
+        document.getElementById("hasil").innerHTML = calculation;
+      }
+
+      function kurang() {
+        getValue();
+        let calculation = input1Value - input2Value;
+        document.getElementById("hasil").innerHTML = calculation;
+      }
+
+      function kali() {
+        getValue();
+        let calculation = input1Value * input2Value;
+        document.getElementById("hasil").innerHTML = calculation;
+      }
+
+      function bagi() {
+        getValue();
+        let calculation = input1Value / input2Value;
+        document.getElementById("hasil").innerHTML = calculation;
+      }
+    </script>
+  </body>
+</html>
