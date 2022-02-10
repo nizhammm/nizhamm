@@ -178,11 +178,6 @@
           gender = document.getElementById("genderWanita").value;
         }
 
-        data[editIdx].fullName = fullNameInput;
-        data[editIdx].occupation = occupationInput;
-        data[editIdx].age = ageInput;
-        data[editIdx].gender = genderInput;
-
         // Input validation
         if (!fullNameInput || !occupationInput) {
           alert("Kedua field harus diisi");
@@ -207,7 +202,39 @@
 
       const deleteData = (deleteIdx) => {
         // alert(deleteIdx)
-        data.splice(deleteIdx, 1);
+        let shouldDelete = confirm("Yakin mau delete data?");
+
+        if (shouldDelete) {
+          data.splice(deleteIdx, 1);
+          renderData();
+        }
+      };
+
+      const saveEditData = (editIdx) => {
+        const fullNameInput = document.getElementById("editFullName").value;
+        const occupationInput = document.getElementById("editOccupation").value;
+        let ageInput = document.getElementById("editAge").value;
+        ageInput = parseInt(ageInput);
+
+        const isPriaChecked = document.getElementById("editGenderPria").checked;
+        const isWanitaChecked =
+          document.getElementById("editGenderWanita").checked;
+
+        let gender;
+
+        // Jika radio Pria sedang dipilih / checked
+        if (isPriaChecked) {
+          gender = document.getElementById("editGenderPria").value;
+        } else if (isWanitaChecked) {
+          // Jika radio Wanita sedang dipilih / checked
+          gender = document.getElementById("editGenderWanita").value;
+        }
+
+        data[editIdx].fullName = fullNameInput;
+        data[editIdx].occupation = occupationInput;
+        data[editIdx].age = ageInput;
+        data[editIdx].gender = gender;
+
         renderData();
       };
     </script>
